@@ -80,6 +80,22 @@ end component;
 			case address is
 				--Reset			
 				when "0000" =>					
+					sum0 <= writedata(31 downto 0);				
+				when "0001" =>
+					sum1 <= writedata(31 downto 0);
+				when "0010" =>
+					sum2 <= writedata(31 downto 0);
+				when "0011" =>
+					sum3 <= writedata(31 downto 0);
+				when "0100" =>
+					sum4 <= writedata(31 downto 0);
+				when "0101" =>
+					sum5 <= writedata(31 downto 0);
+				when "0110" =>
+					sum6 <= writedata(31 downto 0);
+				when "0111" =>
+					sum7 <= writedata(31 downto 0);
+				when "1111" =>				
 					readdata <= (others => '0');
 					sum0 <= (others => '0');
 					sum1 <= (others => '0');
@@ -89,23 +105,6 @@ end component;
 					sum5 <= (others => '0');
 					sum6 <= (others => '0');
 					sum7 <= (others => '0');
-				
-				when "0001" =>
-					sum0 <= writedata(31 downto 0);
-				when "0010" =>
-					sum0 <= writedata(31 downto 0);
-				when "0011" =>
-					sum0 <= writedata(31 downto 0);
-				when "0100" =>
-					sum0 <= writedata(31 downto 0);
-				when "0101" =>
-					sum0 <= writedata(31 downto 0);
-				when "0110" =>
-					sum0 <= writedata(31 downto 0);
-				when "0111" =>
-					sum0 <= writedata(31 downto 0);
-				when "1000" =>
-					sum0 <= writedata(31 downto 0);					
 				when others => null;
 			end case;
 					
