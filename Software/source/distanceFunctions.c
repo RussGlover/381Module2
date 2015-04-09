@@ -1,10 +1,41 @@
-#include "classifier_core.h"
+#include "distanceFunctions.h"
 //Calculates the distance between the sample and each entry in the library
 //Library is a 2d [library size]*8 array containing the 8 short int values of each bin value for the library of songs
 //Each row represents a song and each column represents a bin value
 //Sample is an 8 bit array of short ints that has the bin data for the current sample
 //Distances is an array of [library size] to return the summed distances between the sample and each library entry
 //Length is the number of elements in the library (must be a factor of 64 for now?)
+
+int main()
+{
+	short int **library;
+	short int *sample;
+	int *distances;
+	int length = 64;
+	int noSamples = 64;
+	int noBins = 8;
+	int i;
+
+	library = calloc(noSamples * sizeof *library);
+	for(i=0; i < noSamples; i++)
+	{
+		library[i] = calloc( noBins * sizeof *library[i]);
+	}
+
+	distances = calloc(noSamples * sizeof *distances);
+
+	sample = calloc(noBins * sizeof *sample);
+
+	getDistances(library, sample, distances, noSamples);
+
+	for(i=0; i < noSamples; i++)
+	{
+		printf("Distance[%i]: %i\n", i, distances[i]);
+	}
+	return 0;
+
+}
+
 void getDistances(short int** library, short int* sample, int* distances, int length)
 {
 	//Indexes
